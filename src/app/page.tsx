@@ -2,10 +2,10 @@
 import Link from 'next/link'
 import React, {useState} from 'react'
 
-
+// aqui tem o inicio com o banner inicial e o botao para iniciare abrir a pokedex
 
 export default function page() {
-    const [loaging , setLoading] = useState(false)
+    const [loaging , setLoading] = useState(false) // so a variavel de loading pra colocar um carregamento no botao caso demore para buscar os dados da api
     function carregar(){
         setLoading(true)
     }
@@ -18,3 +18,5 @@ export default function page() {
         </div>
     )
 }
+
+//daqui para o arquivo  page na pasta dashboard

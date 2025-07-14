@@ -2,6 +2,9 @@ import DashboardClient from './dashboardClient'
 import React from 'react'
 import api from '@/axios'
 
+// aquie basicamente a busca, a requisição principal dos dados da api
+//feito aqui para que aqui sendo a fonte como documento em ServerComponent para 
+// os os que vao ter os dados tenham os pokemons ja carregados
 export default async function DashboardPage() {
     
     const response = await api('?limit=50')
@@ -12,7 +15,6 @@ export default async function DashboardPage() {
 
     return (
         <>
-            
 
                 <DashboardClient pokemons={detalhes} />
             
@@ -20,3 +22,5 @@ export default async function DashboardPage() {
 
     )
 }
+
+//segue pro arquivo dashboardClient

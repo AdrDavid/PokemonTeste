@@ -6,7 +6,7 @@ interface PesquisaState{
     setAbrirMenu: (valor: boolean) => void
     setAbrirPesquisa: (valor: boolean) => void
 }
-
+// e nesse tennho o gerenciamento de estado de uma modal que usei em dois arquivos
 export const usePesquisaStore = create<PesquisaState>((set) => ({
     abrirPesquisa: false,
     abrirMenu: false,

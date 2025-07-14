@@ -1,9 +1,6 @@
 'use client'
 import React, { useState, useEffect, Suspense } from 'react'
-import api from '@/axios'
-import { useFiltroStore } from '@/store/filtro'
 import { motion } from "motion/react"
-import { div } from 'motion/react-client'
 interface CardProp {
     name: string,
     url: string
@@ -11,37 +8,18 @@ interface CardProp {
     hab: string
     imagem: string
 }
-
-interface PokeInfo {
-    sprites: {
-        other: {
-            "official-artwork": {
-                front_default: string
-            }
-        },
-        front_default: string
-    },
-    abilities: {
-        ability: {
-            name: string
-        }
-    }[],
-
-    types: {
-        type: {
-            name: string
-        }
-    }
-}
+// penas tipagem
 
 
 export function Card({ name, url, tipo, hab, imagem }: CardProp) {
-    
+    //aqui apenas as props pegas do arquivo anterior "dashboardClient"
 
+
+    //fiz um obj de cores para ter cores de cada tipo de pokemon ex 
     const cores = {
-        grass: { card: 'from-[#a8e063] to-[#56ab2f]', info: 'bg-[#a8e063]' },
+        grass: { card: 'from-[#a8e063] to-[#56ab2f]', info: 'bg-[#a8e063]' }, // esse ver pra natureza
         water: { card: 'from-[#2193b0] to-[#6dd5ed]', info: 'bg-[#6dd5ed]' },
-        fire: { card: 'from-[#f12711] to-[#f5af19]', info: 'bg-[#f5af19]' },
+        fire: { card: 'from-[#f12711] to-[#f5af19]', info: 'bg-[#f5af19]' }, // esse pra pokemons do tipo fogo etc...
         electric: { card: 'from-[#fcee09] to-[#fca311]', info: 'bg-[#fcee09]' },
         bug: { card: 'from-[#a8c0ff] to-[#3f2b96]', info: 'bg-[#a8c0ff]' },
         poison: { card: 'from-[#9d50bb] to-[#6e48aa]', info: 'bg-[#9d50bb]' },
@@ -60,10 +38,9 @@ export function Card({ name, url, tipo, hab, imagem }: CardProp) {
     };
 
 
+    //aqui tem as configurações para definir nas variavei cardCor e infoCor com base no primeiro tipo considerando que algins pokemons tem mais de um
     const tipoPrincipal = tipo.split(',')[0]
-
     const cor = cores[tipoPrincipal as keyof typeof cores]
-
     let cardCor = cor ? `bg-gradient-to-r ${cor.card}` : 'bg-gray-400'
     let infoCor = cor ? `${cor.info} text-black` : 'bg-gray-600 text-white'
 
@@ -73,13 +50,15 @@ export function Card({ name, url, tipo, hab, imagem }: CardProp) {
 
         <>
             
-            
+                {/* aqui tem esse motion.div para um animação apenas*/}
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onHoverStart={() => console.log('over start')}
                     className={`${cardCor} " w-[120px]  sm:w-[300px] rounded-[5px]  shadow-xl/30 py-2 sm:py-10 px-1 sm:px-5`}>
-
+                        {/* aqui pode ver o uso das cores*/}
+                        
+                        {/* nessa parte basicamente estou renderizando o card */}
                     <div className="w-full h-[120px]  sm:h-[200px]  bg-red-400  bg-[url('/images/cena.jpg')] bg-center bg-cover relative border-3 border-[#3b3b3b]">
                         <div className='w-full h-full bg-[rgba(0,0,0,0.6)] flex justify-center'>
 
@@ -93,7 +72,7 @@ export function Card({ name, url, tipo, hab, imagem }: CardProp) {
                         </div>
                     </div>
                     <div className={`${infoCor} w-full  p-4  h-[100px] rounded-[5px] mt-5`}>
-
+                            {/* aqui tambem */}
                         <ul>
                             <li className='text-[10px] sm:text-[12px]'>Tipo: <span className='font-semibold'>{tipo}</span> </li>
                             <li className='text-[10px] sm:text-[12px]'>Hab: <span className='font-semibold'>{hab}</span> </li>
@@ -107,5 +86,8 @@ export function Card({ name, url, tipo, hab, imagem }: CardProp) {
             
         </>
 
+    
     )
 }
+
+// e agora para o arquivo da pasta store/filtrp

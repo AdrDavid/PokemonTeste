@@ -7,3 +7,5 @@ const api = axios.create({
     }
 })
 export default api
+
+// a configuração base do axios puxando a url do .env

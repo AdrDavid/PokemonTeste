@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import api from '@/axios'
 import { useParams } from 'next/navigation'
+//aqui temos a pagina de detalhes
 
 interface PokeInfo {
     sprites: {
@@ -32,11 +33,16 @@ interface PokeInfo {
     }[]
 }
 
+//aqui usei o router do next para pegar o nome no parametro
+
 export default function PokeName() {
     const params = useParams()
     const name = params.name as string
+    
+    // defini a variavel dados para pegar os tipos
     const [dados, setDados] = useState<PokeInfo>()
 
+    // apenas a chamada para ppegar tudo e colcoar na variavel dados
     async function buscarPokemon() {
         const response = await api.get(`/${name}`)
         console.log(response.data)
@@ -50,7 +56,7 @@ export default function PokeName() {
     return (
         <div>
 
-
+        {/* e basicamente exibindo as informações aqui */}
             <div className='bg-[#ededed] mx-auto max-w-[1200px] md:w-full flex flex-wrap rounded-md'>
                 <div className="w-full md:w-[60%] lg:w-[60%]  rounded-md relative bg-[url('/images/fundoPk.jpg')] bg-cover">
                     <img className='w-full  z-2 top-0' src={dados?.sprites.other['official-artwork'].front_default} alt="" />

@@ -7,6 +7,9 @@ interface FiltroState {
     setBuscaTipo: (tipo:string) => void
 }
 
+// aqui temo apenas o controle do estado global com zustend  para o nome e tipo
+// agora para busca
+
 export const useFiltroStore = create<FiltroState>((set) => ({
     buscaNome: '',
     buscaTipo: '',

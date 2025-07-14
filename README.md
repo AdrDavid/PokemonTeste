@@ -4,6 +4,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+comece pela pagina inicial que fica na raiz de app
+
+
 //david 
 npm run build,
 npm run start,
