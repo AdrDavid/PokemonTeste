@@ -4,6 +4,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+//david 
+npm run build,
+npm run start,
+# retirei o .env pois tem a url setada la
+
 ```bash
 npm run dev
 # or
