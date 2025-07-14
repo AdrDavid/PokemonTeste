@@ -5,7 +5,7 @@ import { div } from 'motion/react-client'
 
 export default async function DashboardPage() {
     
-    const response = await api('?limit=20')
+    const response = await api('?limit=100')
     const lista = response.data.results
     const detalhes = await Promise.all(
         lista.map((p: any) => api(p.url).then((res) => res.data))
